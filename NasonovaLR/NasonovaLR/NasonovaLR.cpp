@@ -10,12 +10,25 @@ struct Pipe
     int d;
 };
 
-int main()
+void PrintePipe(Pipe& p)
+{
+    std::cout << "Pipe ID number: " << p.id << "  Diameter: " << p.d;
+}
+
+Pipe AddPipe()
 {
     Pipe p;
     p.id = 0;
     std::cout << "Enter the diameter ";
     std::cin >> p.d;
-    std::cout << "Pipe number: " << p.id << "Diameter: " << p.d;
+    return p;
 }
+
+int main()
+{
+    Pipe p = AddPipe();
+    PrintePipe(p);
+}
+
+
 
