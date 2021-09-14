@@ -8,11 +8,13 @@ struct Pipe
 {
     int id;
     int d;
+    int l;
 };
+
 
 void PrintePipe(Pipe& p)
 {
-    std::cout << "Pipe ID number: " << p.id << "  Diameter: " << p.d;
+    std::cout << "Pipe ID number: " << p.id << "  Diameter: " << p.d << " mm " << " Lenght: " << p.l << " km ";
 }
 
 Pipe AddPipe()
@@ -21,6 +23,8 @@ Pipe AddPipe()
     p.id = 0;
     std::cout << "Enter the diameter ";
     std::cin >> p.d;
+    std::cout << "Enter the lenght ";
+    std::cin >> p.l;
     return p;
 }
 
