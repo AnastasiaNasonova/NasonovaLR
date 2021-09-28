@@ -11,12 +11,16 @@ struct Pipe
     int id;
     int d;
     int l;
-    string r;
+    bool r;
 };
 
-struct CS; {
-
-}
+struct CS 
+{
+    int id;
+    string name;
+    int numA;
+    int numW;
+};
 
 
 void PrintePipe(Pipe& p)
@@ -38,11 +42,42 @@ Pipe AddPipe()
     return p;
 }
 
+CS AddCS()
+{
+    CS c;
+    c.id = 0;
+    cout << "Name of the Compressor Station";
+    cin >> c.name;
+    cout << "Number of workshops";
+    cin >> c.numA;
+    cout << "Number of workshops in olperation";
+    cin >> c.numW;
+    return c;
+}
+
 int main()
 {
+    int menu;
+    Pipe p;
+    CS c;
+    cout << " 1. Add a pipe\n 2. Add Compressor Station\n 3. Viewing all objects\n 0. Exit\n";
+    cin >> menu;
+    switch (menu)
+    {
+    case 0: 
+        return 0;
+    case 1:
+        p = AddPipe();
+    case 2:
+        c = AddCS();
+    case 3:
+        PrintePipe(p);
+    default: 
+        break;
+    }
+    
+      
 
-    Pipe p = AddPipe();
-    PrintePipe(p);
 }
 
 
