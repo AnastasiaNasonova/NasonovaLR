@@ -16,9 +16,8 @@ struct Pipe
 
 struct CS 
 {
-    int id;
+    int id, numA;
     string name;
-    int numA;
     int numW;
 };
 
@@ -32,20 +31,21 @@ void PrintePipe(Pipe& p)
 Pipe AddPipe()
 {
     Pipe p;
-    p.id = 0;
+    p.id = 1;
     cout << "Enter the diameter ";
     cin >> p.d;
     cout << "Enter the lenght ";
     cin >> p.l;
-    cout << "Is the pipe being repaired ? ";
-    cin >> p.r;
+    p.r = 0;
+    //cout << "Is the pipe being repaired ? ";
+    //cin >> p.r;
     return p;
 }
 
 CS AddCS()
 {
     CS c;
-    c.id = 0;
+    c.id = 1;
     cout << "Name of the Compressor Station";
     cin >> c.name;
     cout << "Number of workshops";
@@ -55,12 +55,23 @@ CS AddCS()
     return c;
 }
 
+Pipe RedactPipe(Pipe& p) {
+    int k;
+    if (p.id == 1) {
+        cout << "Enter the state of the pipe (1 - under repair; 0 - not under repair)";
+        cin >> p.r;
+    }
+    else cout << "No pipe data available"; //данных о трубе нет
+    return p;
+}
+
 int main()
 {
     int menu;
-    Pipe p;
-    CS c;
-    cout << " 1. Add a pipe\n 2. Add Compressor Station\n 3. Viewing all objects\n 0. Exit\n";
+
+    Pipe p = {};
+    CS c = {};
+    cout << " 1. Add a pipe\n 2. Add Compressor Station\n 3. Viewing all objects\n 4. Redact Pipe\n 0. Exit\n";
     cin >> menu;
     switch (menu)
     {
@@ -68,10 +79,16 @@ int main()
         return 0;
     case 1:
         p = AddPipe();
+        break;
     case 2:
         c = AddCS();
+        break;
     case 3:
         PrintePipe(p);
+        break;
+    case 4:
+        RedactPipe(p);
+        break;
     default: 
         break;
     }
